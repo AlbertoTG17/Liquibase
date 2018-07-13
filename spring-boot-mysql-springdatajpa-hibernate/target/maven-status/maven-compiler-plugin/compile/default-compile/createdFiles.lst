@@ -1,0 +1,5 @@
+netgloo/controllers/UserController.class
+netgloo/Application.class
+netgloo/controllers/MainController.class
+netgloo/models/User.class
+netgloo/models/UserDao.class
