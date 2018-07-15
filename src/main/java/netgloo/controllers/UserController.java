@@ -89,20 +89,20 @@ public class UserController {
    * @param name The new name.
    * @return A string describing if the user is successfully updated or not.
    */
-  @RequestMapping("/update")
-  @ResponseBody
-  public String updateUser(long id, String email, String name) {
-    try {
-      User user = userDao.findOne(id);
-      user.setEmail(email);
-      user.setName(name);
-      userDao.save(user);
-    }
-    catch (Exception ex) {
-      return "Error updating the user: " + ex.toString();
-    }
-    return "User successfully updated!";
-  }
+//  @RequestMapping("/update")
+//  @ResponseBody
+//  public String updateUser(long id, String email, String name) {
+//    try {
+//      User user = userDao.findOne(id);
+//      user.setEmail(email);
+//      user.setName(name);
+//      userDao.save(user);
+//    }
+//    catch (Exception ex) {
+//      return "Error updating the user: " + ex.toString();
+//    }
+//    return "User successfully updated!";
+//  }
 
   // ------------------------
   // PRIVATE FIELDS
