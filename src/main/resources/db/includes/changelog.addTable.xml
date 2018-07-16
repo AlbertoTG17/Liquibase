@@ -8,7 +8,7 @@
 	<changeSet author="atostado" id="V6">
 		<comment>Changeset generado por includes</comment>
 		<createTable remarks="Used to store user's information"
-			tableName="users">
+			tableName="usuarios">
 			<column name="id" type="int">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
@@ -22,14 +22,14 @@
 			</column>
 		</createTable>
 
-		<insert tableName="users">
+		<insert tableName="usuarios">
 			<column name="id" valueNumeric="1" />
 			<column name="name" value="Soumitra" />
 			<column name="email" value="contact@jeejava.com" />
 			<column name="phone" valueNumeric="1234567890" />
 			<column name="address" valueNumeric="1" />
 		</insert>
-		<insert tableName="users">
+		<insert tableName="usuarios">
 			<column name="id" valueNumeric="2" />
 			<column name="name" value="Rushikesh" />
 			<column name="email" value="contact@jeejava.com" />
