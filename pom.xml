@@ -6,7 +6,7 @@
 
 	<groupId>netgloo</groupId>
 	<artifactId>spring-boot-mysql-springdatajpa-hibernate</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version> 
 
 	<name>spring-boot-mysql-springdatajpa-hibernate</name>
 	<description>Use Spring Data JPA + Hibernate + MySQL in Spring Boot</description>
@@ -19,6 +19,7 @@
 	</parent>
 
 	<dependencies>
+		<!-- SPRING -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -26,13 +27,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>		
-
+		</dependency>
+		<!-- MYSQL --> 
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-
+		<!-- LIQUIBASE -->
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
@@ -42,11 +43,7 @@
 			<artifactId>liquibase-maven-plugin</artifactId>
 			<version>3.4.1</version>
 		</dependency>
-
-
 	</dependencies>
-
-
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -61,37 +58,60 @@
 				<groupId>org.liquibase</groupId>
 				<artifactId>liquibase-maven-plugin</artifactId>
 				<version>3.4.1</version>
-
 				<dependencies>
-					
-						<dependency>
-							<groupId>org.liquibase.ext</groupId>
-							<artifactId>liquibase-hibernate4</artifactId>
-							<version>3.5</version>
-						</dependency>
-						<dependency>
-							<groupId>org.springframework</groupId>
-							<artifactId>spring-beans</artifactId>
-							<version>4.1.7.RELEASE</version>
-						</dependency>
-						<dependency>
-							<groupId>org.springframework.data</groupId>
-							<artifactId>spring-data-jpa</artifactId>
-							<version>1.7.3.RELEASE</version>
-						</dependency>
-					</dependencies>
+					<dependency>
+						<groupId>org.liquibase.ext</groupId>
+						<artifactId>liquibase-hibernate4</artifactId>
+						<version>3.5</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-beans</artifactId>
+						<version>4.1.7.RELEASE</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework.data</groupId>
+						<artifactId>spring-data-jpa</artifactId>
+						<version>1.7.3.RELEASE</version>
+					</dependency>
+				</dependencies>
 
-					<configuration>
-						<propertyFile>src/main/resources/db/liquibase.properties</propertyFile>
-					</configuration>
-					<!-- <executions> -->
-					<!-- <execution> -->
-					<!-- <phase>package</phase> -->
-					<!-- <goals> -->
-					<!-- <goal>update</goal> -->
-					<!-- </goals> -->
-					<!-- </execution> -->
-					<!-- </executions> -->
+				<configuration>
+					<propertyFile>src/main/resources/db/liquibase.properties</propertyFile>
+				</configuration>
+				
+				<executions>
+					<execution>
+						<id>1</id>
+						<phase>test</phase>
+						<configuration>
+							<url>jdbc:mysql://127.0.0.1:3306/entity_db</url>
+							<username>root</username>
+							<password></password>
+							<driver>com.mysql.jdbc.Driver</driver>							
+							<changeLogFile>src/main/resources/db/generated/changelog_diff.xml</changeLogFile>
+							<referenceUrl>hibernate:spring:netgloo.models?dialect=org.hibernate.dialect.MySQL5Dialect</referenceUrl>
+							<diffChangeLogFile>src/main/resources/db/generated/changelog_diff.xml</diffChangeLogFile>
+						</configuration>
+						<goals>
+							<goal>diff</goal>
+							<goal>update</goal>	 						
+						</goals>
+					</execution>
+<!-- 					DUPLICATE ID -->
+					<execution>
+						<id>2</id>
+						<phase>install</phase>
+<!-- 							<configuration> -->
+<!-- 								<changeLogFile>src/main/resources/db/changelog_master.xml</changeLogFile> -->
+<!-- 							</configuration> -->
+<!-- 						CONFIGURACION GENERAL -->
+						<goals>
+							<goal>update</goal>
+						</goals>
+					</execution>
+
+				</executions>
 			</plugin>
 
 			<plugin>

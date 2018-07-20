@@ -29,7 +29,7 @@
 	<!-- Se insertan registros en Personas -->
 	<changeSet id="V2" author="atostado">
 		<comment>Insercion de registros en la tabla personas</comment>
-		<sqlFile path="db/sql/add_personas.sql" />
+		<sqlFile path="src/main/resources/db/sql/add_personas.sql" />
 	</changeSet>
 
 	<changeSet author="atostado" id="V3"> <!--runOnChange="true" -->
@@ -41,7 +41,7 @@
 
 	<!-- Se crea una nueva tabla vacia Example -->
 	<changeSet id="V4" author="atostado">
-		<sqlFile path="db/sql/create_table_example.sql" />
+		<sqlFile path="src/main/resources/db/sql/create_table_example.sql" />
 	</changeSet>
 
 	<changeSet author="atostado" id="V5">
@@ -51,8 +51,9 @@
 			joinString="A new String" tableName="example" />
 	</changeSet>
 	
-	<include file="db/includes/changelog.addTable.xml"/>
-
-
+	<include file="src/main/resources/db/includes/changelog.addTable.xml"/>
+	
+	<include file="src/main/resources/db/generated/changelog_diff.xml"/>
+	
 
 </databaseChangeLog>
