@@ -4,12 +4,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>netgloo</groupId>
-	<artifactId>spring-boot-mysql-springdatajpa-hibernate</artifactId>
+	<groupId>samples</groupId>
+	<artifactId>Ejemplo_Liquibase</artifactId>
 	<version>0.0.1-SNAPSHOT</version> 
 
-	<name>spring-boot-mysql-springdatajpa-hibernate</name>
-	<description>Use Spring Data JPA + Hibernate + MySQL in Spring Boot</description>
+	<name>Ejemplo_Liquibase</name>
+	<description>Use Spring Data JPA + Hibernate + MySQL in Spring Boot + Liquibase</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -82,34 +82,25 @@
 				
 				<executions>
 					<execution>
-						<id>1</id>
+						<id>****Comparacion de entities classpath-bd y Update en la bd auxiliar****</id>
 						<phase>test</phase>
 						<configuration>
-							<url>jdbc:mysql://127.0.0.1:3306/entity_db</url>
-							<username>root</username>
-							<password></password>
-							<driver>com.mysql.jdbc.Driver</driver>							
-							<changeLogFile>src/main/resources/db/generated/changelog_diff.xml</changeLogFile>
-							<referenceUrl>hibernate:spring:netgloo.models?dialect=org.hibernate.dialect.MySQL5Dialect</referenceUrl>
-							<diffChangeLogFile>src/main/resources/db/generated/changelog_diff.xml</diffChangeLogFile>
+							<propertyFile>src/main/resources/db/liquibase_diff.properties</propertyFile>
 						</configuration>
 						<goals>
 							<goal>diff</goal>
 							<goal>update</goal>	 						
 						</goals>
 					</execution>
-<!-- 					DUPLICATE ID -->
+
 					<execution>
-						<id>2</id>
-						<phase>install</phase>
-<!-- 							<configuration> -->
-<!-- 								<changeLogFile>src/main/resources/db/changelog_master.xml</changeLogFile> -->
-<!-- 							</configuration> -->
-<!-- 						CONFIGURACION GENERAL -->
+						<id>****Update en la bd principal****</id>
+						<phase>test</phase>
 						<goals>
 							<goal>update</goal>
+							<goal>status</goal>
 						</goals>
-					</execution>
+					</execution> 
 
 				</executions>
 			</plugin>
