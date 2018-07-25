@@ -25,4 +25,10 @@
             </column>
         </addColumn>
     </changeSet>
+    <changeSet author="atostado (generated)" id="1532504841153-1">
+        <dropTable tableName="cabessas"/>
+    </changeSet>
+    <changeSet author="atostado (generated)" id="1532504841153-2">
+        <dropTable tableName="users"/>
+    </changeSet>
 </databaseChangeLog>
