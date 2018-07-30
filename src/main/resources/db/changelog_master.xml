@@ -5,10 +5,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-	<preConditions>
+	<preConditions onFail="WARN">
 		<or>
-			<dbms type="mysql"/>
-			<runningAs username="root"/>
+			<dbms type="mysql" />
+			<runningAs username="root" />
 		</or>
 	</preConditions>
 
@@ -16,10 +16,10 @@
 		<comment>Se crea la tabla personas</comment>
 		<createTable tableName="personas">
 			<column name="id" type="INT">
-				<constraints nullable="false"/>
+				<constraints nullable="false" />
 			</column>
 			<column name="name" type="VARCHAR(50)">
-				<constraints nullable="false"/>
+				<constraints nullable="false" />
 			</column>
 			<column name="lastname" type="VARCHAR(255)" />
 			<column name="mail" type="VARCHAR(255)" />
@@ -50,10 +50,14 @@
 			finalColumnName="column_mixed" finalColumnType="varchar(255)"
 			joinString="A new String" tableName="example" />
 	</changeSet>
-	
-	<include file="src/main/resources/db/includes/changelog.addTable.xml"/>
-	
-	<include file="src/main/resources/db/generated/changelog_diff.xml"/>
-	
+
+	<include file="src/main/resources/db/includes/changelog.addTable.xml" />
+
+	<include file="src/main/resources/db/generated/changelog_diff.xml" />
+
+	<changeSet author="atostado" id="tagDatabase-example">
+		<tagDatabase tag="version_4.5" />
+	</changeSet>
+
 
 </databaseChangeLog>

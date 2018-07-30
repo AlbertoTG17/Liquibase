@@ -21,8 +21,8 @@ public class Cabessa {
 	@NotNull
 	private String name;
 
-	@NotNull
-	private boolean esCabeson;
+//	@NotNull
+//	private boolean esCabeson;
 
 	public Cabessa() {
 	}
@@ -32,7 +32,7 @@ public class Cabessa {
 		this.id = id;
 		this.email = email;
 		this.name = name;
-		this.esCabeson = esCabeson;
+//		this.esCabeson = esCabeson;
 	}
 
 	// Getter and setter methods
@@ -60,12 +60,12 @@ public class Cabessa {
 		this.name = value;
 	}
 
-	public boolean isEsCabeson() {
-		return esCabeson;
-	}
-
-	public void setEsCabeson(boolean esCabeson) {
-		this.esCabeson = esCabeson;
-	}
+//	public boolean isEsCabeson() {
+//		return esCabeson;
+//	}
+//
+//	public void setEsCabeson(boolean esCabeson) {
+//		this.esCabeson = esCabeson;
+//	}
 
 }
