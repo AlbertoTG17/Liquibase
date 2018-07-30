@@ -13,48 +13,48 @@ pipeline {
 
         stage('Build') { 
             steps {
-                sh 'mvn -B -DskipTests clean package' 
+                sh 'mvn -B -DskipTests clean' 
             }
-    }
-
-	stage('Test') { 
-            steps {
-                sh 'mvn test' 
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml' 
-                }
-            }
-    }
-
-	stage('Example') {
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                //submitter "alice,bob"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                }
-            }
-            steps {
-                echo "Hello, ${PERSON}, nice to meet you!!."
-                echo "Integrating liquibase"
-                sh 'mvn liquibase:status'
-            }
-	    post{
-			always{
-			     echo 'I always say Hello'
-			}
 	    }
-	    
-    }
-
-	stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'	
-            }
-    }
+	
+		stage('Test') { 
+	            steps {
+	                sh 'mvn test' 
+	            }
+	            post {
+	                always {
+	                    junit 'target/surefire-reports/*.xml' 
+	                }
+	            }
+	    }
+	
+		stage('Example') {
+	            input {
+	                message "Should we continue?"
+	                ok "Yes, we should."
+	                //submitter "alice,bob"
+	                parameters {
+	                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+	                }
+	            }
+	            steps {
+	                echo "Hello, ${PERSON}, nice to meet you!!."
+	                echo "Integrating liquibase"
+	                sh 'mvn liquibase:status'
+	            }
+		    post{
+				always{
+				     echo 'I always say Hello'
+				}
+		    }
+		    
+	    }
+	
+		stage('Deliver') {
+	            steps {
+	                sh './jenkins/scripts/deliver.sh'	
+	            }
+	    }
 
 	
 	
