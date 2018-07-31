@@ -1,12 +1,12 @@
 pipeline {
 
-    agent {
+    agent 
     	any
         //docker {
           //  image 'bitnami/jenkins:latest' 
 
         //}
-    }
+    
 
     stages {
 
