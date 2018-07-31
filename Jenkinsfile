@@ -1,7 +1,6 @@
 pipeline {
 
-    agent 
-    	any
+    agent any
         //docker {
           //  image 'bitnami/jenkins:latest' 
 
