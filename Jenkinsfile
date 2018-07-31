@@ -1,19 +1,18 @@
 pipeline {
 
     agent {
-        docker {
-            image 'bitnami/jenkins:latest' 
+    	any
+        //docker {
+          //  image 'bitnami/jenkins:latest' 
 
-        }
+        //}
     }
 
     stages {
 
-	
-
         stage('Build') { 
             steps {
-                sh 'mvn -B -DskipTests clean' 
+                sh 'mvn -B -DskipTests clean package' 
             }
 	    }
 	
