@@ -1,10 +1,10 @@
 pipeline {
 
-    agent any
-        //docker {
-          //  image 'bitnami/jenkins:latest' 
+    agent
+        docker {
+           image 'jenkinsci/blueocean' 
 
-        //}
+        }
     
 
     stages {

@@ -52,7 +52,8 @@
 	</changeSet>
 
 	<include file="src/main/resources/db/includes/changelog.addTable.xml" />
-
+	
+<!-- 	BEANS JPA -->
 	<include file="src/main/resources/db/generated/changelog_diff.xml" />
 
 	<changeSet author="atostado" id="tagDatabase-example">
