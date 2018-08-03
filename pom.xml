@@ -78,7 +78,8 @@
 
 				<configuration>
 					<propertyFile>src/main/resources/db/liquibase.properties</propertyFile>
-					 <outputFileEncoding>UTF-8</outputFileEncoding>
+					<outputFileEncoding>UTF-8</outputFileEncoding>
+					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
 				</configuration>
 				
 				<executions>
