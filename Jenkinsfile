@@ -2,11 +2,11 @@ pipeline {
 
     agent {
         docker {
-            image 'maven:3.7-alpine' 
+            image 'maven:3.3-jdk-8' 
             args '-v /root/.m2:/root/.m2' 
             args '--network documentos_bridge'	//mvn va por un docker externo y hay que asignarle a nuestra red para que vea a los demas
-
         }
+        
     }
     
 
@@ -45,7 +45,7 @@ pipeline {
 	            }
 		    post{
 				always{
-				     echo 'I always say Hello'
+				     echo 'I always say Hello al final'
 				}
 		    }
 		    
