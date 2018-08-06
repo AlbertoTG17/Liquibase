@@ -51,12 +51,12 @@ pipeline {
 		    
 	    }
 	
-		stage('Deliver') {
-	            steps {
+		//stage('Deliver') {
+	            //steps {
 	                //sh './jenkins/scripts/deliver.sh'	
-	                sh 'mvn spring-boot:run'
-	            }
-	    }
+	               
+	            //}
+	    //}
 
 	
 	
