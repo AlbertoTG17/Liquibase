@@ -6,8 +6,7 @@
 
 	<groupId>samples</groupId>
 	<artifactId>Ejemplo_Liquibase</artifactId>
-	<version>0.0.1-SNAPSHOT</version> 
-
+	<version>0.0.1-SNAPSHOT</version>
 	<name>Ejemplo_Liquibase</name>
 	<description>Use Spring Data JPA + Hibernate + MySQL in Spring Boot + Liquibase</description>
 
