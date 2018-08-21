@@ -46,6 +46,7 @@
 
 	<changeSet author="atostado" id="V5">
 		<comment>Se mergean dos columas de la tabla example</comment>
+		
 		<mergeColumns column1Name="column1" column2Name="column2"
 			finalColumnName="column_mixed" finalColumnType="varchar(255)"
 			joinString="A new String" tableName="example" />
@@ -53,12 +54,11 @@
 
 	<include file="src/main/resources/db/includes/changelog.addTable.xml" />
 	
-<!-- 	BEANS JPA -->
-	<include file="src/main/resources/db/generated/changelog_diff.xml" />
-
 	<changeSet author="atostado" id="tagDatabase-example">
 		<tagDatabase tag="version_4.5" />
 	</changeSet>
-
+	
+<!-- 	BEANS JPA -->
+	<include file="src/main/resources/db/generated/changelog_diff.xml" />
 
 </databaseChangeLog>

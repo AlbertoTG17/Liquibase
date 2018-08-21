@@ -27,7 +27,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<!-- MYSQL --> 
+		<!-- MYSQL -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -42,6 +42,12 @@
 			<artifactId>liquibase-maven-plugin</artifactId>
 			<version>3.4.1</version>
 		</dependency>
+		<!-- 		GENERADOR YAML -->
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<properties>
@@ -73,14 +79,21 @@
 						<artifactId>spring-data-jpa</artifactId>
 						<version>1.7.3.RELEASE</version>
 					</dependency>
+					<!-- GENERADOR YAML -->
+					<dependency>
+						<groupId>org.yaml</groupId>
+						<artifactId>snakeyaml</artifactId>
+						<version>1.17</version>
+					</dependency>
 				</dependencies>
 
 				<configuration>
 					<propertyFile>src/main/resources/db/liquibase.properties</propertyFile>
 					<outputFileEncoding>UTF-8</outputFileEncoding>
 					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+					<migrationSqlOutputFile>src/main/resources/db/generated/dryrun.sql</migrationSqlOutputFile>
 				</configuration>
-				
+
 				<executions>
 					<execution>
 						<id>****Comparacion de entities classpath-bd y Update en la bd auxiliar****</id>
@@ -90,7 +103,7 @@
 						</configuration>
 						<goals>
 							<goal>diff</goal>
-							<goal>update</goal>	 						
+							<goal>update</goal>
 						</goals>
 					</execution>
 
@@ -101,7 +114,7 @@
 							<goal>update</goal>
 							<goal>status</goal>
 						</goals>
-					</execution> 
+					</execution>
 
 				</executions>
 			</plugin>
