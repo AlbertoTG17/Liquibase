@@ -16,7 +16,7 @@ public class Cabessa {
 	private long id;
 
 	@NotNull
-	private String email;
+	private String email2;
 
 	@NotNull
 	private String name;
@@ -30,7 +30,7 @@ public class Cabessa {
 	public Cabessa(long id, @NotNull String email, @NotNull String name, @NotNull boolean esCabeson) {
 		super();
 		this.id = id;
-		this.email = email;
+		this.email2 = email;
 		this.name = name;
 //		this.esCabeson = esCabeson;
 	}
@@ -45,11 +45,11 @@ public class Cabessa {
 	}
 
 	public String getEmail() {
-		return email;
+		return email2;
 	}
 
 	public void setEmail(String value) {
-		this.email = value;
+		this.email2 = value;
 	}
 
 	public String getName() {

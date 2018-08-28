@@ -1,0 +1,76 @@
+databaseChangeLog:
+- changeSet:
+    id: 1535021939846-1
+    author: atostado (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              constraints:
+                primaryKey: true
+            name: id
+            type: INT
+        - column:
+            name: firstname
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: lastname
+            type: VARCHAR(50)
+        - column:
+            name: state
+            type: CHAR(2)
+        - column:
+            name: username
+            type: VARCHAR(8)
+        tableName: person
+- changeSet:
+    id: 1535021939846-2
+    author: atostado (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: id
+            type: CHAR(2)
+        tableName: state
+- changeSet:
+    id: 1535021939846-3
+    author: atostado (generated)
+    changes:
+    - addPrimaryKey:
+        columnNames: id
+        constraintName: PRIMARY
+        tableName: state
+- changeSet:
+    id: 1535021939846-4
+    author: atostado (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: state
+        indexName: FK_PERSON_STATE
+        tableName: person
+- changeSet:
+    id: 1535021939846-5
+    author: atostado (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: state
+        baseTableName: person
+        constraintName: FK_PERSON_STATE
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: state
+

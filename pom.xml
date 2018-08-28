@@ -64,6 +64,7 @@
 				<artifactId>liquibase-maven-plugin</artifactId>
 				<version>3.4.1</version>
 				<dependencies>
+<!-- 					PARA GENERAR ENTITIES -->
 					<dependency>
 						<groupId>org.liquibase.ext</groupId>
 						<artifactId>liquibase-hibernate4</artifactId>
@@ -106,7 +107,6 @@
 							<goal>update</goal>
 						</goals>
 					</execution>
-
 					<execution>
 						<id>****Update en la bd principal****</id>
 						<phase>test</phase>
@@ -115,7 +115,6 @@
 							<goal>status</goal>
 						</goals>
 					</execution>
-
 				</executions>
 			</plugin>
 

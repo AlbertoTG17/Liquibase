@@ -2,9 +2,9 @@ pipeline {
 
     agent {
         docker {
-            image 'maven:3.3-jdk-8' 
+            image 'maven:3.3-jdk-8' //imagen de maven con java 8
             args '-v /root/.m2:/root/.m2' 
-            args '--network Jenkins+mysql+adminer_bridge'	//mvn va por un docker externo y hay que asignarle a nuestra red para que vea a los demas OJO A LA NOMBRE DE LA RED
+            args '--network Jenkinsmysqladminer_bridge'	//mvn va por un docker externo y hay que asignarle a nuestra red para que vea a los demas OJO A LA NOMBRE DE LA RED
         }
         
     }

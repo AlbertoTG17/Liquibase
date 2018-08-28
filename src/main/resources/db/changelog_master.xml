@@ -5,10 +5,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-	<preConditions onFail="WARN">
+	<preConditions onFail="HALT">
+		
 		<or>
 			<dbms type="mysql" />
-			<runningAs username="root" />
+			<runningAs username="rootl" />
 		</or>
 	</preConditions>
 
@@ -32,33 +33,34 @@
 		<sqlFile path="src/main/resources/db/sql/add_personas.sql" />
 	</changeSet>
 
-	<changeSet author="atostado" id="V3"> <!--runOnChange="true" -->
-		<createTable tableName="TablesAndTables">
-			<column name="COLUMN1" type="TEXT" />
-			<column name="COLUMN2" type="TEXT" />
-		</createTable>
-	</changeSet>
-
 	<!-- Se crea una nueva tabla vacia Example -->
 	<changeSet id="V4" author="atostado">
 		<sqlFile path="src/main/resources/db/sql/create_table_example.sql" />
 	</changeSet>
-
+ 
+	
 	<changeSet author="atostado" id="V5">
 		<comment>Se mergean dos columas de la tabla example</comment>
-		
+
 		<mergeColumns column1Name="column1" column2Name="column2"
 			finalColumnName="column_mixed" finalColumnType="varchar(255)"
 			joinString="A new String" tableName="example" />
 	</changeSet>
 
 	<include file="src/main/resources/db/includes/changelog.addTable.xml" />
-	
+
 	<changeSet author="atostado" id="tagDatabase-example">
 		<tagDatabase tag="version_4.5" />
 	</changeSet>
-	
-<!-- 	BEANS JPA -->
+
+	<!-- BEANS JPA -->
 	<include file="src/main/resources/db/generated/changelog_diff.xml" />
+
+	<changeSet author="atostado" id="V3"> <!--runOnChange="true" -->
+		<createTable tableName="TablesAndTables">
+			<column name="COLUMN1" type="TEXT" />
+			<column name="COLUMN2" type="TEXT" />
+		</createTable>
+	</changeSet>
 
 </databaseChangeLog>
